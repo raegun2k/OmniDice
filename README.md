@@ -33,14 +33,14 @@ There are also 8 buttons on one side that allow you to set the display mode(more
 
 The buttons are as follows [default/shortcut]
 
-[Mode / d2]
-[subtract 1 to how many dice rolled / d4]
-[add 1 to how many dice rolled / d6]
-[subtract one from number of faces on the dice / d8]
-[add one to number of faces on the dice / d10]
-[subtract ten from number of faces on the dice / d12]
-[add ten to number of faces on the dice / d20]
-[shortcut Fn]
+1. [Mode / d2]
+2. [subtract 1 to how many dice rolled / d4]
+3. [add 1 to how many dice rolled / d6]
+4. [subtract one from number of faces on the dice / d8]
+5. [add one to number of faces on the dice / d10]
+6. [subtract ten from number of faces on the dice / d12]
+7. [add ten to number of faces on the dice / d20]
+8. [shortcut Fn]
 
 <img src="https://github.com/raegun2k/OmniDice/blob/main/images/DiceSelectorSm.JPG" width="400">
 
