@@ -71,3 +71,4 @@ I included the other files such as the 3D print file and blend file I used for t
 
 ## Wiring Diagram
 
+<img src="https://github.com/raegun2k/OmniDice/blob/main/images/wiringdiagram.png" width="1024">
