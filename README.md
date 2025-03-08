@@ -1,8 +1,11 @@
+
 # OmniDice
 
 ## *Uses accelerometer and hall effect sensors to provide both a tactile experience and proper seed randomization to simulate various dice rolls*
 
 This project started as a random thought which then took over my week employing leftover scraps from a lightsaber and HID project. So, it's not the most *polished* project but it got the job done and I'll probably do a version 2 at some point with fixes and improvements from what I learned. All that to say, this is definitely a personal quick fun project, not some serious engineering effort.
+
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/AogAOIQYp0M/0.jpg)](https://www.youtube.com/watch?v=AogAOIQYp0M)
 
 **
 
@@ -48,11 +51,23 @@ The buttons are as follows [default/shortcut]
 
 There are two display modes available. Clicking the "Mode" button will switch between the two.
 
- 1. Total
+
+<img src="https://github.com/raegun2k/OmniDice/blob/main/images/ModeSelect.png" width="400" /> 
+
+
+ 1. **Total**
 		 This mode only displays the total of all dice rolled. So if you rolled 2d6 and the two dice produced a 4 and a 3, it would display only 7, the sum of both. This is also the mode that's easiest to read given the small 128px x 30px OLED screen in use
 
+<img src="https://github.com/raegun2k/OmniDice/blob/main/images/totalmode.png" width="400" >
 
 		  
- 2. Detail
+ 2. **Detail**
 		 This mode shows the total but also a punctuation delimited list of all the rolls made. So, for example, if you're playing a TTRPG that asks you to roll two d20s with advantage and pick the highest, you'll see both roles listed. If you roll more dice than the screen can display, a truncation icon of [...] will be shown.
+
+<img src="https://github.com/raegun2k/OmniDice/blob/main/images/detailmode.png" width="400" >
+
+## Other files
+I included the other files such as the 3D print file and blend file I used for the case but honestly I just adapted some kind of Disney gacha toy case that was given to me. So, not sure what you'll do with the 3D model but you're welcome to them. There's also a splash.h file which must be copied into the Adafruit_SSD1306 library's directory on your local computer, overwriting the existing one, if using the same OLED display and wanting that same little "Omnidice" splash screen shown. Or use your own specially formatted compatible image if you like. 
+
+## Wiring Diagram
 
