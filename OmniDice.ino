@@ -80,7 +80,7 @@ Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 #define FTP_BTN 8 // increment die faces by 10
 #define SHIFT_BTN 9 // if held, buttons become shortcuts
 #define BTN_DELAY 200 // how long buttons need to cool down for
-
+#define SHAKE_DELAY 400 // makes sure you need to actually shake it to set it off
 #define HALLEFFECT1 A0 // Analog pin the first hall effect sensor is on
 #define HALLEFFECT2 A1 // Analog pin the second hall effect sensor is on
 
@@ -95,6 +95,7 @@ Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 unsigned long startmillis;
 unsigned long buttonTracker[] = {0,0,0,0,0,0,0};
 unsigned long currentMillis = 0;
+byte shakeLoops = 0;
 unsigned int total = 0;
 
 
@@ -107,8 +108,8 @@ const byte ha1= HALLEFFECT1; // Analog pin connected to the Analog Hall Effect S
 const byte ha2= HALLEFFECT2;
 const byte dplus = 2;
 const byte dminus = 2;
-unsigned int faces = 6;
-unsigned int numdice = 1;
+byte faces = 6;
+byte numdice = 1;
 // 0 = detailed view
 // 1 = only totals
 // 3 = Magic 8Ball
@@ -234,6 +235,12 @@ void loop() {
   // if there's sufficient X or Y acceleration, initiate a reroll
   // we don't want it going off on pickup, so Z ignored
   if(AccX >= 1.5 || AccY >= 1.5) {
+    shakeLoops++;
+    if(shakeLoops < 10) {
+      Sprintln("Unsure if real shake.");
+    }
+    else {
+      Sprintln("Real shake detected.");
     display.clearDisplay();
     display.setTextColor(WHITE);
     display.setTextSize(1);
@@ -249,6 +256,7 @@ void loop() {
     shaking = 10;
     // craft a seed value for randomseed
     seed = (seed+AccX+AccY+AccZ+(ha1v*0.1)+(ha2v*0.1))*(AccX);
+    }
   }
   else {
     if(shaking > 0) {
@@ -259,10 +267,12 @@ void loop() {
       if(seed > 0) {
 
       randomSeed(seed);
+      shakeLoops = 0;
       displaySelectedMode(true);
       
       }
       seed = 0.0;
+      
     }
     if(seed > 0) {
       // used to keep track of seed if debugging
@@ -420,16 +430,25 @@ void readButtonStates() {
         numdice++;
         diceSelectorDisplay();
       }
+      else {
+        diceSelectorDisplay();
+      }
     } 
     if(slowBtn(DM_BTN)) {
-      if(numdice > 2) {
+      if(numdice > 1) {
         numdice--;
+        diceSelectorDisplay();
+      }
+      else {
         diceSelectorDisplay();
       }
     } 
     if(slowBtn(FP_BTN)) {
-      if(faces < 300) {
+      if(faces < 254) {
         faces++;
+        diceSelectorDisplay();
+      }
+      else {
         diceSelectorDisplay();
       }
     } 
@@ -438,16 +457,25 @@ void readButtonStates() {
         faces--;
         diceSelectorDisplay();
       }
+      else {
+        diceSelectorDisplay();
+      }
     } 
     if(slowBtn(FTP_BTN)) {
-      if(faces < 290) {
+      if(faces < 244) {
         faces = faces+10;
+        diceSelectorDisplay();
+      }
+      else {
         diceSelectorDisplay();
       }
     } 
     if(slowBtn(FTM_BTN)) {
       if(faces > 11) {
         faces  = faces-10;
+        diceSelectorDisplay();
+      }
+      else {
         diceSelectorDisplay();
       }
     }     
