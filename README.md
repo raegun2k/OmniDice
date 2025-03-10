@@ -11,9 +11,9 @@ This project started as a random thought which then took over my week employing 
 
 ## The idea
 
-I wanted something that I could wield like a tabletop dice, but allowed any number of any faces of dice I'd run across. But virtual dice have some drawbacks I don't like. Specifically, I like something tactile, and computers suck as random
+I wanted something that I could wield like a tabletop dice, but allowed any number of any faces of dice I'd run across. But virtual dice have some drawbacks I don't like. Specifically, I like something tactile, and computers suck as random number generation.
 
-For anyone somehow here unaware, computers don't _do_ random. Rather they fake random through various means to get something functionally random enough. And at the core of most of these systems is something called a 'seed' which ideally you generate via an actual random factor. 
+Computers don't _do_ random. Rather they fake random through various means to get something functionally random enough. And at the core of most of these systems is something called a 'seed' which ideally you generate via an actual random factor. 
 
 Humans can be random.
 
